@@ -1,5 +1,5 @@
 Start Virtualenv:
-. ~/.virtualenvs/superlists/bin/activate
+. ~/.virtualenvs/superlists/bin/activate # alt v macro!!
 
 Start Django dev web server:
 ./manage.py runserver

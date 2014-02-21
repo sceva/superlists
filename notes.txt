@@ -1,0 +1,11 @@
+Start Virtualenv:
+. ~/.virtualenvs/superlists/bin/activate
+
+Start Django dev web server:
+./manage.py runserver
+
+Git commands:
+git add . #adds everything
+git status # shows what is ready to commit
+git diff # shows what has changed since last commit
+git commit # commits the files to the repo

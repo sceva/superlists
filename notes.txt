@@ -4,8 +4,14 @@ Start Virtualenv:
 Start Django dev web server:
 ./manage.py runserver
 
+Running tests:
+python functional_test.py
+python manage.py test appname # or appname.function or .class
+
 Git commands:
 git add . #adds everything
 git status # shows what is ready to commit
 git diff # shows what has changed since last commit
 git commit # commits the files to the repo
+get commit -a # automatically add any changes to tracked files
+git commit -am"notes here" # changes and commit message

@@ -23,33 +23,6 @@ class HomePageTest(TestCase):
         # self.assertIn(b'<title>To-Do lists</title>', response.content)
         # self.assertTrue(response.content.endswith(b'</html>'))
 
-    def test_home_page_can_save_a_POST_request(self):
-        # 1. Setup
-        request = HttpRequest()
-        request.method = 'POST'
-        request.POST['item_text'] = "A new list item"
-        # 2. Exercise
-        response = home_page(request)
-        # 3. Assert
-        self.assertEqual(Item.objects.count(), 1)
-        new_item = Item.objects.first()
-        self.assertEqual(new_item.text, 'A new list item')
-
-    def test_home_page_redirects_after_a_POST(self):
-        request = HttpRequest()
-        request.method = 'POST'
-        request.POST['item_text'] = "A new list item"
-
-        response = home_page(request)
-
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(response['location'], '/lists/the-only-list-in-the-world/')
-
-    def test_home_page_only_saves_item_when_necessary(self):
-        request = HttpRequest()
-        home_page(request)
-        self.assertEqual(Item.objects.count(), 0)
-
 class ItemModelTest(TestCase):
 
     def test_saving_and_retrieving_items(self):
@@ -84,3 +57,36 @@ class ListViewTest(TestCase):
 
         self.assertContains(response, 'itemey 1')
         self.assertContains(response, 'itemey 2')
+
+class NewListTest(TestCase):
+
+    def test_saving_a_POST_request(self):
+        # This is how to test manually - changed to using
+        # Django test client inline below...
+        # # 1. Setup
+        # request = HttpRequest()
+        # request.method = 'POST'
+        # request.POST['item_text'] = "A new list item"
+        self.client.post(
+            '/lists/new',
+            data = {'item_text': 'A new list item'}
+        )
+        # # 2. Exercise
+        # response = home_page(request)
+        # 3. Assert
+        self.assertEqual(Item.objects.count(), 1)
+        new_item = Item.objects.first()
+        self.assertEqual(new_item.text, 'A new list item')
+
+    def test__redirects_after_a_POST(self):
+        # request = HttpRequest()
+        # request.method = 'POST'
+        # request.POST['item_text'] = "A new list item"
+        response = self.client.post(
+            '/lists/new',
+            data = {'item_text': 'A new list item'}
+        )
+
+        # self.assertEqual(response.status_code, 302)
+        # self.assertEqual(response['location'], '/lists/the-only-list-in-the-world/')
+        self.assertRedirects(response, '/lists/the-only-list-in-the-world/')

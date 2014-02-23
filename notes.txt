@@ -5,8 +5,11 @@ Start Django dev web server:
 ./manage.py runserver
 
 Running tests:
-python functional_test.py
+manage.py test functional_tests # before LiveServerTestCase: python functional_test.py
 python manage.py test appname # or appname.function or .class
+
+Clearing database:
+./manage.py syncdb --noinput # or python manage.py syncdb the ./ is some kind of shortcut
 
 Git commands:
 git add . #adds everything
@@ -15,3 +18,4 @@ git diff # shows what has changed since last commit
 git commit # commits the files to the repo
 get commit -a # automatically add any changes to tracked files
 git commit -am"notes here" # changes and commit message
+git tag end-of-chapter-05

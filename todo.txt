@@ -1,0 +1,2 @@
+todo 1 support more than one list.
+todo 2 clean up after functional tests (leaving test items on site)

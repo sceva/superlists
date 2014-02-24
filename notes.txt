@@ -29,3 +29,13 @@ south:
 
 linux clear terminal window:
 clear
+
+Staging/production server
+Set up non root user:
+# these commands must be run as root
+root@server:$ useradd -m -s /bin/bash non-root-user # add user named non-root-user
+# -m creates a home folder, -s sets non-root-user to use bash by default
+root@server:$ usermod -a -G sudo non-root-user # add non-root-user to the sudoers group
+root@server:$ passwd non-root-user # set password for non-root-user
+root@server:$ su - non-root-user # switch-user to being non-root-user!
+non-root-user@server:$

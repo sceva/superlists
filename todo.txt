@@ -4,4 +4,4 @@
 4 Add unique URLs for each list
 5 Add a URL for creating a new list via POST
 6 Add URLs for adding a new item to an existing list via POST
-todo 7 Clean up similar list urls
+7 Clean up similar list urls

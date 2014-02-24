@@ -30,6 +30,10 @@ south:
 linux clear terminal window:
 clear
 
+Server commands:
+export STAGING=tdd-staging.foreignlanguageflashcards.com # use as $STAGING
+export LIVE=tdd.foreignlanguageflashcards.com # use as $LIVE
+
 Staging/production server
 Set up non root user:
 # these commands must be run as root

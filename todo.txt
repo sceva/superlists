@@ -1,6 +1,6 @@
 1 support more than one list. - moved to #3
 2 clean up after functional tests (leaving test items on site)
-todo 3 Adjust model so that items are associated with different lists
+3 Adjust model so that items are associated with different lists
 todo 4 Add unique URLs for each list
-todo 5 Add a URL for creating a new list via POST
+5 Add a URL for creating a new list via POST
 todo 6 Add URLs for adding a new item to an existing list via POST

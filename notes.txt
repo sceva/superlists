@@ -19,3 +19,12 @@ git commit # commits the files to the repo
 get commit -a # automatically add any changes to tracked files
 git commit -am"notes here" # changes and commit message
 git tag end-of-chapter-05
+
+south:
+./manage.py schemamigration myapp --initial
+./manage.py migrate myapp
+./manage.py schemamigration myapp --auto
+./manage.py migrate myapp 00xx-migration-name # to migrate to a specific db
+
+linux clear terminal window:
+clear

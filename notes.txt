@@ -1,5 +1,7 @@
 Start Virtualenv:
-. ~/.virtualenvs/superlists/bin/activate # alt v macro!!
+. ../virtualenv/bin/activate # alt v macro
+# initially it was located here:
+#. ~/.virtualenvs/superlists/bin/activate # alt v macro!!
 
 Start Django dev web server:
 ./manage.py runserver
@@ -7,6 +9,8 @@ Start Django dev web server:
 Running tests:
 manage.py test functional_tests # before LiveServerTestCase: python functional_test.py
 python manage.py test appname # or appname.function or .class
+python3 manage.py test functional_tests.test_list_item_validation
+
 
 Clearing database:
 ./manage.py syncdb --noinput # or python manage.py syncdb the ./ is some kind of shortcut
@@ -43,3 +47,28 @@ root@server:$ usermod -a -G sudo non-root-user # add non-root-user to the sudoer
 root@server:$ passwd non-root-user # set password for non-root-user
 root@server:$ su - non-root-user # switch-user to being non-root-user!
 non-root-user@server:$
+
+Fabric Deploy commands:
+fab function_name,host=SERVER_ADDRESS # this is the generic call
+# fab runs fabfile.py, you tell it which function(s) to run
+cd deploy_tools #run from fab dir
+# to run the deploy function in fabfile.py:
+fab deploy:host=tdd.foreignlanguageflashcards.com
+
+
+AWS ec2 tweaks:
+Running fab against AWS server asks for 'Passphrase for private key' - s..1
+To fabric into EC2 as other than root or ubuntu user:
+copy pem file to lubuntu VM  at tdd home: ~/.ssh/filename.pem
+chmod 400 ~/.ssh/filename.pem
+ssh-add ~/.ssh/filename.pem
+on ec2: edit /etc/ssh/sshd.config and set PasswordAuthentication = yes
+Reboot ec2 machine
+Try
+ssh tdd@ec2-54-226-86-204.compute-1.amazonaws.com
+or ssh tdd@elastic.ip.here, or ssh tdd@tdd-staging.foreignlanguageflashcards.com
+The following worked the first time, but then my password is on github... leave it off and enter password each time...
+if works, then add to deploy_tools/fabfile.py:
+env.user = 'tdd'
+env.password = 'qqqq'
+Fab should work - it also asked for a Passphrase for private key - which s..1 worked... Not sure where the Passphrase was set...

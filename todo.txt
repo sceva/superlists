@@ -8,3 +8,4 @@
 todo 8 clean up hard coded urls in tests
 todo 9 remove hard-coded URLs from views.py
 todo 10 remove hard-coded URL from forms in list.html and home.html
+todo 11 remove duplication of validation logic in views.

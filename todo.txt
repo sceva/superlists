@@ -5,3 +5,6 @@
 5 Add a URL for creating a new list via POST
 6 Add URLs for adding a new item to an existing list via POST
 7 Clean up similar list urls
+todo 8 clean up hard coded urls in tests
+todo 9 remove hard-coded URLs from views.py
+todo 10 remove hard-coded URL from forms in list.html and home.html

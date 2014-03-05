@@ -37,6 +37,13 @@ class ListAndItemModelsTest(TestCase):
         with self.assertRaises(ValidationError):
             item.save()
             item.full_clean()
+        # with statement is the same as:
+            # try:
+            #   item.save()
+            #   item.full_clean()
+            #   self.fail('The save should have raised on exception')
+            # except Validation_Error:
+            #   pass
 
     def test_get_absolute_url(self):
         list_ = List.objects.create()

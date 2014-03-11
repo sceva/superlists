@@ -24,6 +24,12 @@ get commit -a # automatically add any changes to tracked files
 git commit -am"notes here" # changes and commit message
 git tag end-of-chapter-05
 git reset --hard # blows away all un-committed changes.
+git checkout -b persona-spike # start a branch
+git checkout master # switch back to master branch
+rm -rf accounts # remove any trace of spiked code
+git add functional_tests/test_login.py
+git commit -m "FT for login with Persona"
+
 
 south:
 ./manage.py schemamigration myapp --initial

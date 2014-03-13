@@ -10,7 +10,8 @@ Running tests:
 manage.py test functional_tests # before LiveServerTestCase: python functional_test.py
 python manage.py test appname # or appname.function or .class
 python3 manage.py test functional_tests.test_list_item_validation
-
+# after adding create_session have to run staging with user tdd:
+./manage.py test functional_tests --liveserver=tdd@tdd-staging.foreignlanguageflashcards.com
 
 Clearing database:
 ./manage.py syncdb --noinput # or python manage.py syncdb the ./ is some kind of shortcut

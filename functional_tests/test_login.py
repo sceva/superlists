@@ -51,10 +51,20 @@ class LoginTest(FunctionalTest):
         self.switch_to_new_window('To-Do')
 
         # She can see that she is logged in
-        time.sleep(1)
-        self.wait_for_element_with_id('id_logout')
-        navbar = self.browser.find_element_by_css_selector('.navbar')
-        self.assertIn(EMAIL, navbar.text)
+        self.wait_to_be_logged_in(email=EMAIL)
+
+        # Refreshing the page, she sees it's a real session login
+        # not just a one-off for that page
+        self.browser.refresh()
+        self.wait_to_be_logged_in(email=EMAIL)
+
+        # Terrified of this new feature, she reflexively clicks logout
+        self.browser.find_element_by_id('id_logout').click()
+        self.wait_to_be_logged_out(email=EMAIL)
+
+        # The 'logged out' status also persists after a refresh
+        self.browser.refresh()
+        self.wait_to_be_logged_out(email=EMAIL)
 
     def switch_to_new_window(self, text_in_title):
         retries = 60
@@ -67,7 +77,3 @@ class LoginTest(FunctionalTest):
             time.sleep(0.5)
         self.fail('could not find window')
 
-    def wait_for_element_with_id(self, element_id):
-        WebDriverWait(self.browser, timeout=30).until(
-            lambda b: b.find_element_by_id(element_id)
-        )

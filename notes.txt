@@ -61,6 +61,8 @@ fab function_name,host=SERVER_ADDRESS # this is the generic call
 cd deploy_tools #run from fab dir
 # to run the deploy function in fabfile.py:
 fab deploy:host=tdd.foreignlanguageflashcards.com
+# to pass in the user:
+fab deplay:host=tdd-staging.foreignlanguageflashcards.com --user=tdd
 
 
 AWS ec2 tweaks:

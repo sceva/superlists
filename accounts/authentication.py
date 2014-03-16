@@ -22,7 +22,7 @@ class PersonaAuthenticationBackend(object):
                 return User.objects.create(email=email)
         else:
             logger.warning(
-                'persona says no. Json was: {}'.format(response.json())
+                'Persona says no. Json was: {}'.format(response.json())
             )
 
     def get_user(self, email):
